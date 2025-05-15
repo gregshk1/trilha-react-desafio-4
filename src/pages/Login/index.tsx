@@ -1,59 +1,73 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import {
+  Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  ErrorText,
+  Title
+} from "./styles";
 
-import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
-import { defaultValues, IFormLogin } from "./types";
+type FormData = {
+  email: string;
+  password: string;
+};
 
-const schema = yup
-  .object({
-    email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
-    password: yup
-      .string()
-      .min(6, "No minimo 6 caracteres")
-      .required("Campo obrigatório"),
-  })
-  .required();
-
-const Login = () => {
+const LoginForm = () => {
   const {
-    control,
-    formState: { errors, isValid },
-  } = useForm<IFormLogin>({
-    resolver: yupResolver(schema),
-    mode: "onBlur",
-    defaultValues,
-    reValidateMode: "onChange",
+    register,
+    handleSubmit,
+    formState: { errors, isValid }
+  } = useForm<FormData>({
+    mode: "onChange"
   });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Dados de login:", data);
+  };
 
   return (
     <Container>
-      <LoginContainer>
-        <Column>
-          <Title>Login</Title>
-          <Spacing />
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Title>Login</Title>
+
+        <FormGroup>
+          <Label>Email</Label>
           <Input
-            name="email"
-            placeholder="Email"
-            control={control}
-            errorMessage={errors?.email?.message}
+            type="email"
+            {...register("email", {
+              required: "Email é obrigatório",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Formato de email inválido"
+              }
+            })}
           />
-          <Spacing />
+          {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+        </FormGroup>
+
+        <FormGroup>
+          <Label>Senha</Label>
           <Input
-            name="password"
             type="password"
-            placeholder="Senha"
-            control={control}
-            errorMessage={errors?.password?.message}
+            {...register("password", {
+              required: "Senha é obrigatória",
+              minLength: {
+                value: 6,
+                message: "A senha deve ter no mínimo 6 caracteres"
+              }
+            })}
           />
-          <Spacing />
-          <Button title="Entrar" />
-        </Column>
-      </LoginContainer>
+          {errors.password && <ErrorText>{errors.password.message}</ErrorText>}
+        </FormGroup>
+
+        <Button title="Entrar" disabled={!isValid} />
+      </Form>
     </Container>
   );
 };
 
-export default Login;
+export default LoginForm;

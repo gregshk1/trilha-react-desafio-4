@@ -1,17 +1,23 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
+export const ButtonContainer = styled.button.attrs({
+  type: "button"
+})<React.ButtonHTMLAttributes<HTMLButtonElement>>`
+  padding: 10px 20px;
+  background-color: #7159c1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 
-export const ButtonContainer = styled.button`
-    width: 100%;
-    height: 42px;
-    background-color: #81259D;
-    color: #FFF;
+  &:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
 
-    border: 1px solid #81259D;
-    border-radius: 21px;
-
-    &:hover {
-        opacity: 0.6;
-        cursor:pointer;
-    }
-`
+  &:hover:enabled {
+    background-color: #5a47a3;
+  }
+`;
