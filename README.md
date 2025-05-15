@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+Objetivo
+Criar uma tela de login funcional, com validação de formulário e estilo moderno e centralizado.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implementação da Validação
+Utilizei o React Hook Form para controle do formulário e validação dos campos.
 
-## Available Scripts
+Os campos do formulário são:
 
-In the project directory, you can run:
+Email: validado para garantir que seja obrigatório e que o formato seja um e-mail válido.
 
-### `npm start`
+Senha: validada para ser obrigatória e com comprimento mínimo de 6 caracteres.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A função handleSubmit do React Hook Form foi usada para controlar o envio do formulário.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Mensagens de erro específicas são exibidas para cada campo quando a validação falha.
 
-### `npm test`
+A validação ocorre no front-end, melhorando a experiência do usuário antes do envio ao servidor.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Estilização
+Usamos styled-components para criar componentes estilizados que compõem o layout do formulário.
 
-### `npm run build`
+O formulário foi centralizado na tela usando flexbox (display: flex; justify-content: center; align-items: center; height: 100vh;).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Aplicamos um fundo degradê suave para o container principal para um visual moderno.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O formulário possui:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Fundo branco com cantos arredondados e sombra leve para destacar da página.
 
-### `npm run eject`
+Inputs com bordas arredondadas e mudança de cor na borda ao focar, melhorando a usabilidade.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Texto centralizado no título para melhor apresentação.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O layout é responsivo, limitando a largura máxima do formulário para manter legibilidade.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Tecnologias e Ferramentas
+React (com TypeScript)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+React Hook Form (validação do formulário)
 
-## Learn More
+styled-components (estilização modular e reutilizável)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+TypeScript para tipagem estática e maior segurança no desenvolvimento
+![unknown_2025 05 15-11 50_1](https://github.com/user-attachments/assets/67211527-c12d-46f2-a76a-90835f1a69f6)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
